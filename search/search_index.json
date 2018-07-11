@@ -1,0 +1,99 @@
+{
+    "docs": [
+        {
+            "location": "/",
+            "text": "Welcome to Docker\n\u00b6\n\n\n\n\nAbstract\n\n\nThis site builds a small body of knowledge for my research into deploying Docker continers with hosting on the \nMicrosoft Azure Kubernetes Service (AKS)\n flavour of \nKubernetes\u00ae\n.\n\n\u00a0\n\nIn addition mkdocs is used for presentation and hosted on a small nginx Docker image as the base layer.\n\n\u00a0\n\nResearch topics covered in this demo:",
+            "title": "Introduction"
+        },
+        {
+            "location": "/#welcome-to-docker",
+            "text": "Abstract  This site builds a small body of knowledge for my research into deploying Docker continers with hosting on the  Microsoft Azure Kubernetes Service (AKS)  flavour of  Kubernetes\u00ae . \n\u00a0 \nIn addition mkdocs is used for presentation and hosted on a small nginx Docker image as the base layer. \n\u00a0 \nResearch topics covered in this demo:",
+            "title": "Welcome to Docker"
+        },
+        {
+            "location": "/docker/",
+            "text": "Configuring Docker for the first time\n\u00b6\n\n\nGet Docker CE\n\u00b6\n\n\n1\n2\ndocker --version\ndocker run hello-world\n\n\n\n\n\n\n1\n2\n3\n4\n5\nDocker info\n\nKernel Version: 4.9.93-linuxkit-aufs\nOperating System: Docker for Windows\nOSType: linux\n\n\n\n\n\n\nAuthor\n\u00b6\n\n\nEmail: s.kupletsky@gmail.com\nTwitter: https://twitter.com/zavoloklom/\nGitHub: https://github.com/zavoloklom/\nCodePen: http://codepen.io/zavoloklom/\nDribble: https://dribbble.com/zavoloklom/\n\n\nPreparing mkdocs environment\n\u00b6\n\n\nInstall python 3.5.4 for windows\n\u00b6\n\n\nPython for Windows\n  /\n\nPython 3.5.4 for windows x64 installer\n\n\n\n\nChoose the windows 64-bit exe install option\n\n\nBe sure to check the add python to path box!\n\n\n\n\n\n\nTip\n\n\nfind out what version of python is installed\n\n\n1\npython --version\n\n\n\n\n\n\n\nInstall mkdocs tool chain\n\u00b6\n\n\n1\n2\n3\n4\n5\n6\n7\npip install mkdocs\n\nmkdocs new DemoDocs\n\nINFO    -  Creating project directory: DemoDocs\nINFO    -  Writing config file: DemoDocs\\mkdocs.yml\nINFO    -  Writing initial docs: DemoDocs\\docs\\index.md\n\n\n\n\n\n\nDemo the new site locally\n\u00b6\n\n\n1\n2\n3\n4\n5\n6\n7\n8\n9\ncd .\\DemoDocs\nmkdocs serve\n\nINFO    -  Building documentation...\nINFO    -  Cleaning site directory\n[I 180702 22:41:06 server:292] Serving on http://127.0.0.1:8000\n[I 180702 22:41:06 handlers:59] Start watching changes\n[I 180702 22:41:06 handlers:61] Start detecting changes\n[I 180702 22:41:25 handlers:132] Browser Connected: http://localhost:8000/\n\n\n\n\n\n\ninstall a UI Theme\n\u00b6\n\n\nhttps://github.com/squidfunk/mkdocs-material\n\n1\npip install mkdocs-material\n\n\n\n\n\nMarkdown introduction\n\u00b6\n\n\nCreate a few new markdown documents for a demo\nShow the docs rendered in Visual Studio 2017\n\n\nPrepare the new doc site\n\u00b6\n\n\nCreate a yml config for mkdocs\n\n\n1\n2\n3\n4\n5\n6\nsite_name: 'Docker Introduction'\npages:\n    - Home: index.md\n    - Docs: DevelopDocs.md\n    - About: about.md\ntheme: readthedocs\n\n\n\n\n\n\nDemo the results hosted locally\n\u00b6\n\n\n1\nmkdocs serve\n\n\n\n\n\n\nCreate new nginx webserver\n\u00b6\n\n\nNGINX project\n\n\n1\ndocker run --detach --publish 80:80 --name webserver nginx\n\n\n\n\n\nDemo nginx default site in the running container\n\nnginx default site\n\n\n1\n2\n3\n4\ndocker ps\n\nCONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                NAMES\n9149d927a911        nginx               \"nginx -g 'daemon of\"   6 minutes ago       Up 6 minutes        0.0.0.0:80->80/tcp   webserver\n\n\n\n\n\n\nPublish the site for production\n\u00b6\n\n\nCreate a Dockerfile\n\n\n\n\nTake latest nginx image\n\n\n\n\nBuild out the new docker image layer\n\n\n\n\nSet working directory inside the image\n\n\nCopy the mkdocs output: \nsite\n into the image\n\n\n\n\n\n\n\n\n1\n2\n3\nFROM nginx\nWORKINGDIR /usr/share/nginx/html\nCOPY site .\n\n\n\n\n\n\nBuild the doc site and the new docker image\n\u00b6\n\n\n1\n2\nmkdocs build\ndocker build --tag mkdocs:v1 .\n\n\n\n\n\n\n1\n2\n3\n4\ndocker images\n\nREPOSITORY          TAG                 IMAGE ID            CREATED             SIZE\nmkdocs              v1                  fa8bbd0a2524        3 minutes ago       110MB\n\n\n\n\n\n\nDemo the Running the container and show the same site is now in the running container.\n\n\nTalk about scaling.",
+            "title": "Docker"
+        },
+        {
+            "location": "/docker/#configuring-docker-for-the-first-time",
+            "text": "",
+            "title": "Configuring Docker for the first time"
+        },
+        {
+            "location": "/docker/#get-docker-ce",
+            "text": "1\n2 docker --version\ndocker run hello-world   1\n2\n3\n4\n5 Docker info\n\nKernel Version: 4.9.93-linuxkit-aufs\nOperating System: Docker for Windows\nOSType: linux",
+            "title": "Get Docker CE"
+        },
+        {
+            "location": "/docker/#author",
+            "text": "Email: s.kupletsky@gmail.com\nTwitter: https://twitter.com/zavoloklom/\nGitHub: https://github.com/zavoloklom/\nCodePen: http://codepen.io/zavoloklom/\nDribble: https://dribbble.com/zavoloklom/",
+            "title": "Author"
+        },
+        {
+            "location": "/docker/#preparing-mkdocs-environment",
+            "text": "",
+            "title": "Preparing mkdocs environment"
+        },
+        {
+            "location": "/docker/#install-python-354-for-windows",
+            "text": "Python for Windows   / Python 3.5.4 for windows x64 installer   Choose the windows 64-bit exe install option  Be sure to check the add python to path box!    Tip  find out what version of python is installed  1 python --version",
+            "title": "Install python 3.5.4 for windows"
+        },
+        {
+            "location": "/docker/#install-mkdocs-tool-chain",
+            "text": "1\n2\n3\n4\n5\n6\n7 pip install mkdocs\n\nmkdocs new DemoDocs\n\nINFO    -  Creating project directory: DemoDocs\nINFO    -  Writing config file: DemoDocs\\mkdocs.yml\nINFO    -  Writing initial docs: DemoDocs\\docs\\index.md",
+            "title": "Install mkdocs tool chain"
+        },
+        {
+            "location": "/docker/#demo-the-new-site-locally",
+            "text": "1\n2\n3\n4\n5\n6\n7\n8\n9 cd .\\DemoDocs\nmkdocs serve\n\nINFO    -  Building documentation...\nINFO    -  Cleaning site directory\n[I 180702 22:41:06 server:292] Serving on http://127.0.0.1:8000\n[I 180702 22:41:06 handlers:59] Start watching changes\n[I 180702 22:41:06 handlers:61] Start detecting changes\n[I 180702 22:41:25 handlers:132] Browser Connected: http://localhost:8000/",
+            "title": "Demo the new site locally"
+        },
+        {
+            "location": "/docker/#install-a-ui-theme",
+            "text": "https://github.com/squidfunk/mkdocs-material 1 pip install mkdocs-material",
+            "title": "install a UI Theme"
+        },
+        {
+            "location": "/docker/#markdown-introduction",
+            "text": "Create a few new markdown documents for a demo\nShow the docs rendered in Visual Studio 2017",
+            "title": "Markdown introduction"
+        },
+        {
+            "location": "/docker/#prepare-the-new-doc-site",
+            "text": "Create a yml config for mkdocs  1\n2\n3\n4\n5\n6 site_name: 'Docker Introduction'\npages:\n    - Home: index.md\n    - Docs: DevelopDocs.md\n    - About: about.md\ntheme: readthedocs",
+            "title": "Prepare the new doc site"
+        },
+        {
+            "location": "/docker/#demo-the-results-hosted-locally",
+            "text": "1 mkdocs serve",
+            "title": "Demo the results hosted locally"
+        },
+        {
+            "location": "/docker/#create-new-nginx-webserver",
+            "text": "NGINX project  1 docker run --detach --publish 80:80 --name webserver nginx   Demo nginx default site in the running container nginx default site  1\n2\n3\n4 docker ps\n\nCONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                NAMES\n9149d927a911        nginx               \"nginx -g 'daemon of\"   6 minutes ago       Up 6 minutes        0.0.0.0:80->80/tcp   webserver",
+            "title": "Create new nginx webserver"
+        },
+        {
+            "location": "/docker/#publish-the-site-for-production",
+            "text": "Create a Dockerfile   Take latest nginx image   Build out the new docker image layer   Set working directory inside the image  Copy the mkdocs output:  site  into the image     1\n2\n3 FROM nginx\nWORKINGDIR /usr/share/nginx/html\nCOPY site .",
+            "title": "Publish the site for production"
+        },
+        {
+            "location": "/docker/#build-the-doc-site-and-the-new-docker-image",
+            "text": "1\n2 mkdocs build\ndocker build --tag mkdocs:v1 .   1\n2\n3\n4 docker images\n\nREPOSITORY          TAG                 IMAGE ID            CREATED             SIZE\nmkdocs              v1                  fa8bbd0a2524        3 minutes ago       110MB   Demo the Running the container and show the same site is now in the running container.  Talk about scaling.",
+            "title": "Build the doc site and the new docker image"
+        },
+        {
+            "location": "/kubernetes/",
+            "text": "Welcome to Docker\n\u00b6",
+            "title": "Kubernetes"
+        },
+        {
+            "location": "/kubernetes/#welcome-to-docker",
+            "text": "",
+            "title": "Welcome to Docker"
+        }
+    ]
+}
