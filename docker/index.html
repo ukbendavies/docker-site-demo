@@ -36,11 +36,11 @@
         <meta name="lang:search.tokenizer" content="[\s\-]+">
       
       <link rel="shortcut icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-0.17.4, mkdocs-material-2.9.2">
+      <meta name="generator" content="mkdocs-0.17.5, mkdocs-material-2.9.2">
     
     
       
-        <title>Docker - docker-site-demo</title>
+        <title>Build - docker-site-demo</title>
       
     
     
@@ -102,7 +102,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
-      <a href="#configuring-docker-for-the-first-time" tabindex="1" class="md-skip">
+      <a href="#install-docker-for-the-first-time" tabindex="1" class="md-skip">
         Skip to content
       </a>
     
@@ -128,7 +128,7 @@
                 docker-site-demo
               </span>
               <span class="md-header-nav__topic">
-                Docker
+                Build
               </span>
             
           
@@ -245,8 +245,8 @@
 
 
   <li class="md-nav__item">
-    <a href=".." title="Introduction" class="md-nav__link">
-      Introduction
+    <a href=".." title="Abstract" class="md-nav__link">
+      Abstract
     </a>
   </li>
 
@@ -262,30 +262,161 @@
     
     <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
     
-      
-    
     
       <label class="md-nav__link md-nav__link--active" for="__toc">
-        Docker
+        Build
       </label>
     
-    <a href="./" title="Docker" class="md-nav__link md-nav__link--active">
-      Docker
+    <a href="./" title="Build" class="md-nav__link md-nav__link--active">
+      Build
     </a>
     
       
 <nav class="md-nav md-nav--secondary">
   
   
-    
-  
   
     <label class="md-nav__title" for="__toc">Table of contents</label>
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#get-docker-ce" title="Get Docker CE" class="md-nav__link">
-    Get Docker CE
+  <a href="#install-docker-for-the-first-time" title="Install Docker for the first time" class="md-nav__link">
+    Install Docker for the first time
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#get-docker-community-edition" title="Get Docker community-edition" class="md-nav__link">
+    Get Docker community-edition
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#install-mkdocs-environment" title="Install mkdocs environment" class="md-nav__link">
+    Install mkdocs environment
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#install-python-354-for-windows" title="Install python 3.5.4 for Windows" class="md-nav__link">
+    Install python 3.5.4 for Windows
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#install-mkdocs-tool-chain" title="Install mkdocs tool chain" class="md-nav__link">
+    Install mkdocs tool chain
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#create-a-new-site" title="Create a new site" class="md-nav__link">
+    Create a new site
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#publish-the-new-mkdocs-site-locally" title="Publish the new mkdocs site locally" class="md-nav__link">
+    Publish the new mkdocs site locally
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#install-a-ui-theme" title="Install a UI Theme" class="md-nav__link">
+    Install a UI Theme
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#update-the-site-configuration" title="Update the site configuration" class="md-nav__link">
+    Update the site configuration
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#demo-the-results-hosted-locally" title="Demo the results hosted locally" class="md-nav__link">
+    Demo the results hosted locally
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#publish-to-a-new-container" title="Publish to a new Container" class="md-nav__link">
+    Publish to a new Container
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#poc-with-a-raw-nginx-webserver" title="PoC with a raw nginx webserver" class="md-nav__link">
+    PoC with a raw nginx webserver
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-a-dockerfile" title="Create a Dockerfile" class="md-nav__link">
+    Create a Dockerfile
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#build-the-doc-site-and-the-new-docker-image" title="Build the doc site and the new docker image" class="md-nav__link">
+    Build the doc site and the new docker image
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#build-the-docker-image" title="Build the Docker image" class="md-nav__link">
+    Build the Docker image
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#demo-the-running-the-container" title="Demo the Running the container" class="md-nav__link">
+    Demo the Running the container
   </a>
   
 </li>
@@ -307,8 +438,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../kubernetes/" title="Kubernetes" class="md-nav__link">
-      Kubernetes
+    <a href="../kubernetes/" title="Deploy" class="md-nav__link">
+      Deploy
     </a>
   </li>
 
@@ -327,15 +458,148 @@
 <nav class="md-nav md-nav--secondary">
   
   
-    
-  
   
     <label class="md-nav__title" for="__toc">Table of contents</label>
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#get-docker-ce" title="Get Docker CE" class="md-nav__link">
-    Get Docker CE
+  <a href="#install-docker-for-the-first-time" title="Install Docker for the first time" class="md-nav__link">
+    Install Docker for the first time
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#get-docker-community-edition" title="Get Docker community-edition" class="md-nav__link">
+    Get Docker community-edition
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#install-mkdocs-environment" title="Install mkdocs environment" class="md-nav__link">
+    Install mkdocs environment
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#install-python-354-for-windows" title="Install python 3.5.4 for Windows" class="md-nav__link">
+    Install python 3.5.4 for Windows
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#install-mkdocs-tool-chain" title="Install mkdocs tool chain" class="md-nav__link">
+    Install mkdocs tool chain
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#create-a-new-site" title="Create a new site" class="md-nav__link">
+    Create a new site
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#publish-the-new-mkdocs-site-locally" title="Publish the new mkdocs site locally" class="md-nav__link">
+    Publish the new mkdocs site locally
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#install-a-ui-theme" title="Install a UI Theme" class="md-nav__link">
+    Install a UI Theme
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#update-the-site-configuration" title="Update the site configuration" class="md-nav__link">
+    Update the site configuration
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#demo-the-results-hosted-locally" title="Demo the results hosted locally" class="md-nav__link">
+    Demo the results hosted locally
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#publish-to-a-new-container" title="Publish to a new Container" class="md-nav__link">
+    Publish to a new Container
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#poc-with-a-raw-nginx-webserver" title="PoC with a raw nginx webserver" class="md-nav__link">
+    PoC with a raw nginx webserver
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-a-dockerfile" title="Create a Dockerfile" class="md-nav__link">
+    Create a Dockerfile
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#build-the-doc-site-and-the-new-docker-image" title="Build the doc site and the new docker image" class="md-nav__link">
+    Build the doc site and the new docker image
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#build-the-docker-image" title="Build the Docker image" class="md-nav__link">
+    Build the Docker image
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#demo-the-running-the-container" title="Demo the Running the container" class="md-nav__link">
+    Demo the Running the container
   </a>
   
 </li>
@@ -359,77 +623,112 @@
                   <a href="https://github.com/ukbendavies/docker-site-demo/edit/master/docs/docker.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
                 
                 
-                <h1 id="configuring-docker-for-the-first-time">Configuring Docker for the first time<a class="headerlink" href="#configuring-docker-for-the-first-time" title="Permanent link">&para;</a></h1>
-<h2 id="get-docker-ce">Get Docker CE<a class="headerlink" href="#get-docker-ce" title="Permanent link">&para;</a></h2>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>docker --version
-docker run hello-world
+                  <h1>Build</h1>
+                
+                <p>Several stages are usually required to build new software and publish to a production environment; in this case the software is the documentation website you are reading right now! </p>
+<p>As a User I connect to an nginx webserver instance (running in a Container) that is going to serve a MkDocs website to a user agent (web browser, such as Chrome) that delivers this content payload so that we can read it.</p>
+<div class="admonition question">
+<p class="admonition-title">What are Containers useful for?</p>
+<p>It is desirable to have a process where new software changes are promoted from a developers environment to production in a series of repeatable steps such that software is available with minimal time from initial change to production publication; Docker is one stack that can be used to perform this task with a number of supporting technology offerings at each stage throughout the deployment pipeline to help us achieve scale.</p>
+<p>Local Development  </p>
+<p>As a developer I would like to create software that I can run locally just like a mini-production environment so that code, deploy, debug loops are fast and my changes can be validated efficiently. I would then like the verified software changes deployed to production so that end users have the same or better experience.</p>
+<p>Continuous Integration (CI) phase  </p>
+<ol>
+<li>Artifacts such as a website, executables and so on are created and in this case a new MkDocs website is generated for this purpose.</li>
+<li>A Dockerfile is used to tell Docker how to build these artifacts into a Docker Image.</li>
+<li>Docker build uses the Dockerfile to generate a new Docker Image (a set file system differences (layers)). At this point it is possible to make a new container instance locally using the new image and the docker run command</li>
+<li>Finally the Docker image can be pushed to a Docker registry, for example Azure Container Registry (ACR), DockerHub, ...</li>
+</ol>
+<p>Continuous Delivery (CD) phase  </p>
+<p>Following on from CI, the CD phase is usually handed off to other systems to manage what can be fairly complex dance: deploying, canary deployments, performing rolling upgrades and rollbacks. Some examples include Microsoft VSTS and Spinnaker (this is not an extensive list and the landscape is changing rapidly). Phrases such as immutable, idempotent, repeatable and state-less become more important as services scale.</p>
+</div>
+<h2 id="install-docker-for-the-first-time">Install Docker for the first time<a class="headerlink" href="#install-docker-for-the-first-time" title="Permanent link">&para;</a></h2>
+<p>Docker grew up on the Linux platform, however it is now possible to use Docker on Windows (Windows 10 and Windows Server).</p>
+<div class="admonition caution">
+<p>In my experience mileage varies and process isolation mode (container as a process) is only available on Windows Server however this poses other problems if you use Server GUI since the kernel is quite old and more recent Windows Server Core / Nano images are much smaller and have newer kernels but Docker requires a kernel level match in order to work.</p>
+<p>Microsoft has a good document that outlines the problem and provides a compatibility matrix with more recent OS.
+<a href="https://docs.microsoft.com/en-us/virtualization/windowscontainers/deploy-containers/version-compatibility">Windows Container Version Compatibility</a></p>
+</div>
+<h3 id="get-docker-community-edition">Get Docker community-edition<a class="headerlink" href="#get-docker-community-edition" title="Permanent link">&para;</a></h3>
+<p>This document focuses on Windows as this is the area of research I am interested in however (apart from occasional syntax) the commands, information and concepts are all cross-platform and will work equally well on Linux or Mac, installation process is one area of substantial difference however so it is suggested that the desired platform guidelines are followed.</p>
+<p><a href="https://www.docker.com/community-edition">Get Docker community-edition</a></p>
+<div class="admonition question">
+<p class="admonition-title">Validate Docker installation</p>
+<p>Check that the installation has succeeded by running the ubiquitous hello-world</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">docker</span> <span class="n">run</span> <span class="n">hello-world</span>
 </pre></div>
 </td></tr></table>
 
+<p>Check the Docker service configuration on Windows</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">docker</span> <span class="n">info</span>
+</pre></div>
+</td></tr></table>
+
+<p>Results in a blob of output, check for details that suggest the mode of operation is Linux, if this is configured correctly a mobyLinuxVM is created to host the linux containers using the Hyper-V hypervisor.</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
-3
-4
-5</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>Docker info
-
-Kernel Version: 4.9.93-linuxkit-aufs
-Operating System: Docker for Windows
+3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>Kernel Version: 4.9.93-linuxkit-aufs  
+Operating System: Docker for Windows  
 OSType: linux
 </pre></div>
 </td></tr></table>
 
-<h1 id="author">Author<a class="headerlink" href="#author" title="Permanent link">&para;</a></h1>
-<p>Email: s.kupletsky@gmail.com
-Twitter: https://twitter.com/zavoloklom/
-GitHub: https://github.com/zavoloklom/
-CodePen: http://codepen.io/zavoloklom/
-Dribble: https://dribbble.com/zavoloklom/</p>
-<h2 id="preparing-mkdocs-environment">Preparing mkdocs environment<a class="headerlink" href="#preparing-mkdocs-environment" title="Permanent link">&para;</a></h2>
-<h3 id="install-python-354-for-windows">Install python 3.5.4 for windows<a class="headerlink" href="#install-python-354-for-windows" title="Permanent link">&para;</a></h3>
+</div>
+<h2 id="install-mkdocs-environment">Install mkdocs environment<a class="headerlink" href="#install-mkdocs-environment" title="Permanent link">&para;</a></h2>
+<h3 id="install-python-354-for-windows">Install python 3.5.4 for Windows<a class="headerlink" href="#install-python-354-for-windows" title="Permanent link">&para;</a></h3>
 <p><a href="https://www.python.org/downloads/windows/">Python for Windows</a>  /
 <a href="https://www.python.org/downloads/release/python-354/">Python 3.5.4 for windows x64 installer</a></p>
-<ul>
-<li>Choose the windows 64-bit exe install option</li>
-<li>Be sure to check the add python to path box!</li>
-</ul>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
-<p>find out what version of python is installed<br />
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>python --version
+<ul>
+<li>Choose the windows 64-bit exe install option</li>
+<li>Be sure to check the checkbox that adds python to path!</li>
+</ul>
+</div>
+<div class="admonition note">
+<p class="admonition-title">if python is already installed</p>
+<p>double check the version of python at the time of creating this documentation 3.5.4 was the latest version that enabled mkdocs to work reliably.<br />
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">python</span> <span class="p">-</span><span class="n">-version</span>
 </pre></div>
 </td></tr></table></p>
 </div>
 <h3 id="install-mkdocs-tool-chain">Install mkdocs tool chain<a class="headerlink" href="#install-mkdocs-tool-chain" title="Permanent link">&para;</a></h3>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>pip install mkdocs
+</pre></div>
+</td></tr></table>
+
+<h2 id="create-a-new-site">Create a new site<a class="headerlink" href="#create-a-new-site" title="Permanent link">&para;</a></h2>
+<p>Create a few new markdown documents for a demo site, start with a home document usually this is index.md and maybe add a simple about page called about.md luckily mkdocs can generate a stub for you.</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>mkdocs new DemoDocs
+</pre></div>
+</td></tr></table>
+
+<div class="admonition note">
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
-3
-4
-5
-6
-7</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>pip install mkdocs
-
-mkdocs new DemoDocs
-
-INFO    -  Creating project directory: DemoDocs
+3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>INFO    -  Creating project directory: DemoDocs
 INFO    -  Writing config file: DemoDocs\mkdocs.yml
 INFO    -  Writing initial docs: DemoDocs\docs\index.md
 </pre></div>
 </td></tr></table>
 
-<h2 id="demo-the-new-site-locally">Demo the new site locally<a class="headerlink" href="#demo-the-new-site-locally" title="Permanent link">&para;</a></h2>
+</div>
+<h3 id="publish-the-new-mkdocs-site-locally">Publish the new mkdocs site locally<a class="headerlink" href="#publish-the-new-mkdocs-site-locally" title="Permanent link">&para;</a></h3>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>cd .\DemoDocs
+
+mkdocs serve
+</pre></div>
+</td></tr></table>
+
+<div class="admonition note">
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
 4
 5
-6
-7
-8
-9</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>cd .\DemoDocs
-mkdocs serve
-
-INFO    -  Building documentation...
+6</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>INFO    -  Building documentation...
 INFO    -  Cleaning site directory
 [I 180702 22:41:06 server:292] Serving on http://127.0.0.1:8000
 [I 180702 22:41:06 handlers:59] Start watching changes
@@ -438,27 +737,28 @@ INFO    -  Cleaning site directory
 </pre></div>
 </td></tr></table>
 
-<h2 id="install-a-ui-theme">install a UI Theme<a class="headerlink" href="#install-a-ui-theme" title="Permanent link">&para;</a></h2>
-<p>https://github.com/squidfunk/mkdocs-material
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>The serve command usually launches the default browser; if this has not occurred navigate to the uri address above. Check the ports and in case of collisions configure mkdocs to serve on a different port e.g. <code>-a localhost:8090</code></p>
+</div>
+<h2 id="install-a-ui-theme">Install a UI Theme<a class="headerlink" href="#install-a-ui-theme" title="Permanent link">&para;</a></h2>
+<p><a href="https://github.com/squidfunk/mkdocs-material">View the mkdocs-material theme on GitHub</a></p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>pip install mkdocs-material
 </pre></div>
-</td></tr></table></p>
-<h2 id="markdown-introduction">Markdown introduction<a class="headerlink" href="#markdown-introduction" title="Permanent link">&para;</a></h2>
-<p>Create a few new markdown documents for a demo
-Show the docs rendered in Visual Studio 2017</p>
-<h2 id="prepare-the-new-doc-site">Prepare the new doc site<a class="headerlink" href="#prepare-the-new-doc-site" title="Permanent link">&para;</a></h2>
-<p>Create a yml config for mkdocs</p>
+</td></tr></table>
+
+<h3 id="update-the-site-configuration">Update the site configuration<a class="headerlink" href="#update-the-site-configuration" title="Permanent link">&para;</a></h3>
+<p>Update the site configuration for mkdocs to render the new site with a new theme. MkDocs uses the yaml format for its configuration, find the section called theme and change this to material.</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
 4
-5
-6</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>site_name: &#39;Docker Introduction&#39;
-pages:
-    - Home: index.md
-    - Docs: DevelopDocs.md
-    - About: about.md
-theme: readthedocs
+5</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">site_name</span><span class="p p-Indicator">:</span> <span class="s">&#39;DemoDocs&#39;</span>
+<span class="l l-Scalar l-Scalar-Plain">pages</span><span class="p p-Indicator">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">Home</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">index.md</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">About</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">about.md</span>
+<span class="l l-Scalar l-Scalar-Plain">theme</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">readthedocs</span>
 </pre></div>
 </td></tr></table>
 
@@ -467,62 +767,89 @@ theme: readthedocs
 </pre></div>
 </td></tr></table>
 
-<h2 id="create-new-nginx-webserver">Create new nginx webserver<a class="headerlink" href="#create-new-nginx-webserver" title="Permanent link">&para;</a></h2>
-<p><a href="https://docs.docker.com/samples/library/nginx">NGINX project</a>
+<h2 id="publish-to-a-new-container">Publish to a new Container<a class="headerlink" href="#publish-to-a-new-container" title="Permanent link">&para;</a></h2>
+<h3 id="poc-with-a-raw-nginx-webserver">PoC with a raw nginx webserver<a class="headerlink" href="#poc-with-a-raw-nginx-webserver" title="Permanent link">&para;</a></h3>
+<p><a href="https://docs.docker.com/samples/library/nginx">Visit the nginx project</a></p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>docker run --detach --publish 80:80 --name webserver nginx
 </pre></div>
-</td></tr></table></p>
-<p>Demo nginx default site in the running container
-<a href="http://localhost:80">nginx default site</a></p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>docker ps
+</td></tr></table>
 
-CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                NAMES
+<p>Open the nginx default website running in the running container
+<a href="http://localhost:80">http://localhost:80</a></p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>docker ps
+</pre></div>
+</td></tr></table>
+
+<div class="admonition note">
+<p class="admonition-title">results in container instance details</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                NAMES
 9149d927a911        nginx               &quot;nginx -g &#39;daemon of&quot;   6 minutes ago       Up 6 minutes        0.0.0.0:80-&gt;80/tcp   webserver
 </pre></div>
 </td></tr></table>
 
-<h3 id="publish-the-site-for-production">Publish the site for production<a class="headerlink" href="#publish-the-site-for-production" title="Permanent link">&para;</a></h3>
-<p>Create a Dockerfile</p>
+</div>
+<h3 id="create-a-dockerfile">Create a Dockerfile<a class="headerlink" href="#create-a-dockerfile" title="Permanent link">&para;</a></h3>
+<div class="admonition example">
+<p class="admonition-title">Requirements</p>
 <ul>
-<li>Take latest nginx image</li>
-<li>
-<p>Build out the new docker image layer</p>
-<ul>
-<li>Set working directory inside the image</li>
-<li>Copy the mkdocs output: <strong>site</strong> into the image</li>
+<li>Use the latest nginx public image from <a href="https://hub.docker.com/">Docker Hub</a></li>
+<li>Set working directory so that content can be created in the correct directory for nginx to discover the website entrypoint</li>
+<li>Copy the contents from the mkdocs build artifacts: <strong>site</strong> into the image working directory</li>
 </ul>
-</li>
-</ul>
+</div>
+<p>The new Dockerfile that matches these requirements looks like this:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
-3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>FROM nginx
+3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="k">FROM</span><span class="s"> nginx</span>
 WORKINGDIR /usr/share/nginx/html
 COPY site .
 </pre></div>
 </td></tr></table>
 
 <h3 id="build-the-doc-site-and-the-new-docker-image">Build the doc site and the new docker image<a class="headerlink" href="#build-the-doc-site-and-the-new-docker-image" title="Permanent link">&para;</a></h3>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>mkdocs build
-docker build --tag mkdocs:v1 .
+<p>Execute mkdocs to build the new <em>site</em> directory containing the content used for static publication. This uses the mkdocs.yml configuration that was defined earlier.</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>mkdocs build
 </pre></div>
 </td></tr></table>
 
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>docker images
-
-REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
-mkdocs              v1                  fa8bbd0a2524        3 minutes ago       110MB
+<h3 id="build-the-docker-image">Build the Docker image<a class="headerlink" href="#build-the-docker-image" title="Permanent link">&para;</a></h3>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>docker build --tag mkdocs:v1 .
 </pre></div>
 </td></tr></table>
 
-<p>Demo the Running the container and show the same site is now in the running container.</p>
-<p>Talk about scaling.</p>
+<p>As <code>docker build</code> executes, new docker image layer(s) are created that contain the changes described in the Dockerfile, almost every instruction creates a new image layer to contain each change.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Tags are used to apply and track change in new images and multiple tags can be added to a single image.</p>
+<p>tag <code>:latest</code> is used by various tools including Docker and Kubernetes to identify the most recent change. This is useful in continuous delivery process where it is desirable to deploy the latest changes without having to modify configuration files or wire through version details imperatively.</p>
+</div>
+<div class="admonition info">
+<p class="admonition-title">List the new Docker image to see the results</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>docker image ls
+</pre></div>
+</td></tr></table>
+
+<p>Results in:</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>REPOSITORY TAG IMAGE ID CREATED SIZE
+docker-site-demo v1 fa8bbd0a2524 3 minutes ago 110MB
+</pre></div>
+</td></tr></table>
+
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Docker build is often referred to as 'bake' or 'baking' or a 'bake phase'</p>
+</div>
+<h2 id="demo-the-running-the-container">Demo the Running the container<a class="headerlink" href="#demo-the-running-the-container" title="Permanent link">&para;</a></h2>
+<div class="admonition fail">
+<p class="admonition-title">Fail</p>
+<p>todo: improve this section</p>
+</div>
+<p>To view the published site and show the same contents as we saw using <code>mkdocs serve</code> open a browser and navigate to the uri address of the container.</p>
+<p>docker run --detach --name demo-site-instance -P 80:80 .</p>
+<p>Now that the container is running, it is possible to see the process using <code>docker ps</code></p>
                 
                   
                 
@@ -543,7 +870,7 @@ mkdocs              v1                  fa8bbd0a2524        3 minutes ago       
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href=".." title="Introduction" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href=".." title="Abstract" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -552,19 +879,19 @@ mkdocs              v1                  fa8bbd0a2524        3 minutes ago       
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                Introduction
+                Abstract
               </span>
             </div>
           </a>
         
         
-          <a href="../kubernetes/" title="Kubernetes" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../kubernetes/" title="Deploy" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                Kubernetes
+                Deploy
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">
@@ -596,7 +923,7 @@ mkdocs              v1                  fa8bbd0a2524        3 minutes ago       
     
       <script src="../assets/javascripts/application.a59e2a89.js"></script>
       
-      <script>app.initialize({version:"0.17.4",url:{base:".."}})</script>
+      <script>app.initialize({version:"0.17.5",url:{base:".."}})</script>
       
     
     

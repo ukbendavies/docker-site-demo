@@ -2,68 +2,63 @@
     "docs": [
         {
             "location": "/",
-            "text": "Welcome to Docker\n\u00b6\n\n\n\n\nAbstract\n\n\nThis site builds a small body of knowledge for my research into deploying Docker continers with hosting on the \nMicrosoft Azure Kubernetes Service (AKS)\n flavour of \nKubernetes\u00ae\n.\n\n\u00a0\n\nIn addition mkdocs is used for presentation and hosted on a small nginx Docker image as the base layer.\n\n\u00a0\n\nResearch topics covered in this demo:",
-            "title": "Introduction"
+            "text": "Deploying a new documentation site using Containers\n\u00b6\n\n\n\n\nAbstract\n\n\nThis site builds a small body of knowledge for my research into deploying Docker Containers that are hosted on the \nMicrosoft Azure Kubernetes Service (AKS)\n flavor of \nKubernetes\u00ae\n.  \n\n\nIn addition mkdocs is used for presentation and hosted on a small nginx Docker image as the base layer.  \n\n\nResearch topics covered in this demo:\n\n\n\n\nKubernetes\n\n\nMicrosoft Azure AKS\n\n\nmkdocs",
+            "title": "Abstract"
         },
         {
-            "location": "/#welcome-to-docker",
-            "text": "Abstract  This site builds a small body of knowledge for my research into deploying Docker continers with hosting on the  Microsoft Azure Kubernetes Service (AKS)  flavour of  Kubernetes\u00ae . \n\u00a0 \nIn addition mkdocs is used for presentation and hosted on a small nginx Docker image as the base layer. \n\u00a0 \nResearch topics covered in this demo:",
-            "title": "Welcome to Docker"
+            "location": "/#deploying-a-new-documentation-site-using-containers",
+            "text": "Abstract  This site builds a small body of knowledge for my research into deploying Docker Containers that are hosted on the  Microsoft Azure Kubernetes Service (AKS)  flavor of  Kubernetes\u00ae .    In addition mkdocs is used for presentation and hosted on a small nginx Docker image as the base layer.    Research topics covered in this demo:   Kubernetes  Microsoft Azure AKS  mkdocs",
+            "title": "Deploying a new documentation site using Containers"
         },
         {
             "location": "/docker/",
-            "text": "Configuring Docker for the first time\n\u00b6\n\n\nGet Docker CE\n\u00b6\n\n\n1\n2\ndocker --version\ndocker run hello-world\n\n\n\n\n\n\n1\n2\n3\n4\n5\nDocker info\n\nKernel Version: 4.9.93-linuxkit-aufs\nOperating System: Docker for Windows\nOSType: linux\n\n\n\n\n\n\nAuthor\n\u00b6\n\n\nEmail: s.kupletsky@gmail.com\nTwitter: https://twitter.com/zavoloklom/\nGitHub: https://github.com/zavoloklom/\nCodePen: http://codepen.io/zavoloklom/\nDribble: https://dribbble.com/zavoloklom/\n\n\nPreparing mkdocs environment\n\u00b6\n\n\nInstall python 3.5.4 for windows\n\u00b6\n\n\nPython for Windows\n  /\n\nPython 3.5.4 for windows x64 installer\n\n\n\n\nChoose the windows 64-bit exe install option\n\n\nBe sure to check the add python to path box!\n\n\n\n\n\n\nTip\n\n\nfind out what version of python is installed\n\n\n1\npython --version\n\n\n\n\n\n\n\nInstall mkdocs tool chain\n\u00b6\n\n\n1\n2\n3\n4\n5\n6\n7\npip install mkdocs\n\nmkdocs new DemoDocs\n\nINFO    -  Creating project directory: DemoDocs\nINFO    -  Writing config file: DemoDocs\\mkdocs.yml\nINFO    -  Writing initial docs: DemoDocs\\docs\\index.md\n\n\n\n\n\n\nDemo the new site locally\n\u00b6\n\n\n1\n2\n3\n4\n5\n6\n7\n8\n9\ncd .\\DemoDocs\nmkdocs serve\n\nINFO    -  Building documentation...\nINFO    -  Cleaning site directory\n[I 180702 22:41:06 server:292] Serving on http://127.0.0.1:8000\n[I 180702 22:41:06 handlers:59] Start watching changes\n[I 180702 22:41:06 handlers:61] Start detecting changes\n[I 180702 22:41:25 handlers:132] Browser Connected: http://localhost:8000/\n\n\n\n\n\n\ninstall a UI Theme\n\u00b6\n\n\nhttps://github.com/squidfunk/mkdocs-material\n\n1\npip install mkdocs-material\n\n\n\n\n\nMarkdown introduction\n\u00b6\n\n\nCreate a few new markdown documents for a demo\nShow the docs rendered in Visual Studio 2017\n\n\nPrepare the new doc site\n\u00b6\n\n\nCreate a yml config for mkdocs\n\n\n1\n2\n3\n4\n5\n6\nsite_name: 'Docker Introduction'\npages:\n    - Home: index.md\n    - Docs: DevelopDocs.md\n    - About: about.md\ntheme: readthedocs\n\n\n\n\n\n\nDemo the results hosted locally\n\u00b6\n\n\n1\nmkdocs serve\n\n\n\n\n\n\nCreate new nginx webserver\n\u00b6\n\n\nNGINX project\n\n\n1\ndocker run --detach --publish 80:80 --name webserver nginx\n\n\n\n\n\nDemo nginx default site in the running container\n\nnginx default site\n\n\n1\n2\n3\n4\ndocker ps\n\nCONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                NAMES\n9149d927a911        nginx               \"nginx -g 'daemon of\"   6 minutes ago       Up 6 minutes        0.0.0.0:80->80/tcp   webserver\n\n\n\n\n\n\nPublish the site for production\n\u00b6\n\n\nCreate a Dockerfile\n\n\n\n\nTake latest nginx image\n\n\n\n\nBuild out the new docker image layer\n\n\n\n\nSet working directory inside the image\n\n\nCopy the mkdocs output: \nsite\n into the image\n\n\n\n\n\n\n\n\n1\n2\n3\nFROM nginx\nWORKINGDIR /usr/share/nginx/html\nCOPY site .\n\n\n\n\n\n\nBuild the doc site and the new docker image\n\u00b6\n\n\n1\n2\nmkdocs build\ndocker build --tag mkdocs:v1 .\n\n\n\n\n\n\n1\n2\n3\n4\ndocker images\n\nREPOSITORY          TAG                 IMAGE ID            CREATED             SIZE\nmkdocs              v1                  fa8bbd0a2524        3 minutes ago       110MB\n\n\n\n\n\n\nDemo the Running the container and show the same site is now in the running container.\n\n\nTalk about scaling.",
-            "title": "Docker"
+            "text": "Several stages are usually required to build new software and publish to a production environment; in this case the software is the documentation website you are reading right now! \n\n\nAs a User I connect to an nginx webserver instance (running in a Container) that is going to serve a MkDocs website to a user agent (web browser, such as Chrome) that delivers this content payload so that we can read it.\n\n\n\n\nWhat are Containers useful for?\n\n\nIt is desirable to have a process where new software changes are promoted from a developers environment to production in a series of repeatable steps such that software is available with minimal time from initial change to production publication; Docker is one stack that can be used to perform this task with a number of supporting technology offerings at each stage throughout the deployment pipeline to help us achieve scale.\n\n\nLocal Development  \n\n\nAs a developer I would like to create software that I can run locally just like a mini-production environment so that code, deploy, debug loops are fast and my changes can be validated efficiently. I would then like the verified software changes deployed to production so that end users have the same or better experience.\n\n\nContinuous Integration (CI) phase  \n\n\n\n\nArtifacts such as a website, executables and so on are created and in this case a new MkDocs website is generated for this purpose.\n\n\nA Dockerfile is used to tell Docker how to build these artifacts into a Docker Image.\n\n\nDocker build uses the Dockerfile to generate a new Docker Image (a set file system differences (layers)). At this point it is possible to make a new container instance locally using the new image and the docker run command\n\n\nFinally the Docker image can be pushed to a Docker registry, for example Azure Container Registry (ACR), DockerHub, ...\n\n\n\n\nContinuous Delivery (CD) phase  \n\n\nFollowing on from CI, the CD phase is usually handed off to other systems to manage what can be fairly complex dance: deploying, canary deployments, performing rolling upgrades and rollbacks. Some examples include Microsoft VSTS and Spinnaker (this is not an extensive list and the landscape is changing rapidly). Phrases such as immutable, idempotent, repeatable and state-less become more important as services scale.\n\n\n\n\nInstall Docker for the first time\n\u00b6\n\n\nDocker grew up on the Linux platform, however it is now possible to use Docker on Windows (Windows 10 and Windows Server).\n\n\n\n\nIn my experience mileage varies and process isolation mode (container as a process) is only available on Windows Server however this poses other problems if you use Server GUI since the kernel is quite old and more recent Windows Server Core / Nano images are much smaller and have newer kernels but Docker requires a kernel level match in order to work.\n\n\nMicrosoft has a good document that outlines the problem and provides a compatibility matrix with more recent OS.\n\nWindows Container Version Compatibility\n\n\n\n\nGet Docker community-edition\n\u00b6\n\n\nThis document focuses on Windows as this is the area of research I am interested in however (apart from occasional syntax) the commands, information and concepts are all cross-platform and will work equally well on Linux or Mac, installation process is one area of substantial difference however so it is suggested that the desired platform guidelines are followed.\n\n\nGet Docker community-edition\n\n\n\n\nValidate Docker installation\n\n\nCheck that the installation has succeeded by running the ubiquitous hello-world\n\n\n1\ndocker\n \nrun\n \nhello-world\n\n\n\n\n\n\n\nCheck the Docker service configuration on Windows\n\n\n1\ndocker\n \ninfo\n\n\n\n\n\n\n\nResults in a blob of output, check for details that suggest the mode of operation is Linux, if this is configured correctly a mobyLinuxVM is created to host the linux containers using the Hyper-V hypervisor.\n\n\n1\n2\n3\nKernel Version: 4.9.93-linuxkit-aufs  \nOperating System: Docker for Windows  \nOSType: linux\n\n\n\n\n\n\n\n\nInstall mkdocs environment\n\u00b6\n\n\nInstall python 3.5.4 for Windows\n\u00b6\n\n\nPython for Windows\n  /\n\nPython 3.5.4 for windows x64 installer\n\n\n\n\nTip\n\n\n\n\nChoose the windows 64-bit exe install option\n\n\nBe sure to check the checkbox that adds python to path!\n\n\n\n\n\n\n\n\nif python is already installed\n\n\ndouble check the version of python at the time of creating this documentation 3.5.4 was the latest version that enabled mkdocs to work reliably.\n\n\n1\npython\n \n-\n-version\n\n\n\n\n\n\n\n\nInstall mkdocs tool chain\n\u00b6\n\n\n1\npip install mkdocs\n\n\n\n\n\n\nCreate a new site\n\u00b6\n\n\nCreate a few new markdown documents for a demo site, start with a home document usually this is index.md and maybe add a simple about page called about.md luckily mkdocs can generate a stub for you.\n\n\n1\nmkdocs new DemoDocs\n\n\n\n\n\n\n\n\n1\n2\n3\nINFO    -  Creating project directory: DemoDocs\nINFO    -  Writing config file: DemoDocs\\mkdocs.yml\nINFO    -  Writing initial docs: DemoDocs\\docs\\index.md\n\n\n\n\n\n\n\n\nPublish the new mkdocs site locally\n\u00b6\n\n\n1\n2\n3\ncd .\\DemoDocs\n\nmkdocs serve\n\n\n\n\n\n\n\n\n1\n2\n3\n4\n5\n6\nINFO    -  Building documentation...\nINFO    -  Cleaning site directory\n[I 180702 22:41:06 server:292] Serving on http://127.0.0.1:8000\n[I 180702 22:41:06 handlers:59] Start watching changes\n[I 180702 22:41:06 handlers:61] Start detecting changes\n[I 180702 22:41:25 handlers:132] Browser Connected: http://localhost:8000/\n\n\n\n\n\n\n\n\n\n\nTip\n\n\nThe serve command usually launches the default browser; if this has not occurred navigate to the uri address above. Check the ports and in case of collisions configure mkdocs to serve on a different port e.g. \n-a localhost:8090\n\n\n\n\nInstall a UI Theme\n\u00b6\n\n\nView the mkdocs-material theme on GitHub\n\n\n1\npip install mkdocs-material\n\n\n\n\n\n\nUpdate the site configuration\n\u00b6\n\n\nUpdate the site configuration for mkdocs to render the new site with a new theme. MkDocs uses the yaml format for its configuration, find the section called theme and change this to material.\n\n\n1\n2\n3\n4\n5\nsite_name\n:\n \n'DemoDocs'\n\n\npages\n:\n\n    \n-\n \nHome\n:\n \nindex.md\n\n    \n-\n \nAbout\n:\n \nabout.md\n\n\ntheme\n:\n \nreadthedocs\n\n\n\n\n\n\n\nDemo the results hosted locally\n\u00b6\n\n\n1\nmkdocs serve\n\n\n\n\n\n\nPublish to a new Container\n\u00b6\n\n\nPoC with a raw nginx webserver\n\u00b6\n\n\nVisit the nginx project\n\n\n1\ndocker run --detach --publish 80:80 --name webserver nginx\n\n\n\n\n\n\nOpen the nginx default website running in the running container\n\nhttp://localhost:80\n\n\n1\ndocker ps\n\n\n\n\n\n\n\n\nresults in container instance details\n\n\n1\n2\nCONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                NAMES\n9149d927a911        nginx               \"nginx -g 'daemon of\"   6 minutes ago       Up 6 minutes        0.0.0.0:80->80/tcp   webserver\n\n\n\n\n\n\n\n\nCreate a Dockerfile\n\u00b6\n\n\n\n\nRequirements\n\n\n\n\nUse the latest nginx public image from \nDocker Hub\n\n\nSet working directory so that content can be created in the correct directory for nginx to discover the website entrypoint\n\n\nCopy the contents from the mkdocs build artifacts: \nsite\n into the image working directory\n\n\n\n\n\n\nThe new Dockerfile that matches these requirements looks like this:\n\n\n1\n2\n3\nFROM\n nginx\n\nWORKINGDIR /usr/share/nginx/html\nCOPY site .\n\n\n\n\n\n\nBuild the doc site and the new docker image\n\u00b6\n\n\nExecute mkdocs to build the new \nsite\n directory containing the content used for static publication. This uses the mkdocs.yml configuration that was defined earlier.\n\n\n1\nmkdocs build\n\n\n\n\n\n\nBuild the Docker image\n\u00b6\n\n\n1\ndocker build --tag mkdocs:v1 .\n\n\n\n\n\n\nAs \ndocker build\n executes, new docker image layer(s) are created that contain the changes described in the Dockerfile, almost every instruction creates a new image layer to contain each change.\n\n\n\n\nTip\n\n\nTags are used to apply and track change in new images and multiple tags can be added to a single image.\n\n\ntag \n:latest\n is used by various tools including Docker and Kubernetes to identify the most recent change. This is useful in continuous delivery process where it is desirable to deploy the latest changes without having to modify configuration files or wire through version details imperatively.\n\n\n\n\n\n\nList the new Docker image to see the results\n\n\n1\ndocker image ls\n\n\n\n\n\n\nResults in:\n\n\n1\n2\nREPOSITORY TAG IMAGE ID CREATED SIZE\ndocker-site-demo v1 fa8bbd0a2524 3 minutes ago 110MB\n\n\n\n\n\n\n\n\n\n\nNote\n\n\nDocker build is often referred to as 'bake' or 'baking' or a 'bake phase'\n\n\n\n\nDemo the Running the container\n\u00b6\n\n\n\n\nFail\n\n\ntodo: improve this section\n\n\n\n\nTo view the published site and show the same contents as we saw using \nmkdocs serve\n open a browser and navigate to the uri address of the container.\n\n\ndocker run --detach --name demo-site-instance -P 80:80 .\n\n\nNow that the container is running, it is possible to see the process using \ndocker ps",
+            "title": "Build"
         },
         {
-            "location": "/docker/#configuring-docker-for-the-first-time",
+            "location": "/docker/#install-docker-for-the-first-time",
+            "text": "Docker grew up on the Linux platform, however it is now possible to use Docker on Windows (Windows 10 and Windows Server).   In my experience mileage varies and process isolation mode (container as a process) is only available on Windows Server however this poses other problems if you use Server GUI since the kernel is quite old and more recent Windows Server Core / Nano images are much smaller and have newer kernels but Docker requires a kernel level match in order to work.  Microsoft has a good document that outlines the problem and provides a compatibility matrix with more recent OS. Windows Container Version Compatibility",
+            "title": "Install Docker for the first time"
+        },
+        {
+            "location": "/docker/#get-docker-community-edition",
+            "text": "This document focuses on Windows as this is the area of research I am interested in however (apart from occasional syntax) the commands, information and concepts are all cross-platform and will work equally well on Linux or Mac, installation process is one area of substantial difference however so it is suggested that the desired platform guidelines are followed.  Get Docker community-edition   Validate Docker installation  Check that the installation has succeeded by running the ubiquitous hello-world  1 docker   run   hello-world    Check the Docker service configuration on Windows  1 docker   info    Results in a blob of output, check for details that suggest the mode of operation is Linux, if this is configured correctly a mobyLinuxVM is created to host the linux containers using the Hyper-V hypervisor.  1\n2\n3 Kernel Version: 4.9.93-linuxkit-aufs  \nOperating System: Docker for Windows  \nOSType: linux",
+            "title": "Get Docker community-edition"
+        },
+        {
+            "location": "/docker/#install-mkdocs-environment",
             "text": "",
-            "title": "Configuring Docker for the first time"
-        },
-        {
-            "location": "/docker/#get-docker-ce",
-            "text": "1\n2 docker --version\ndocker run hello-world   1\n2\n3\n4\n5 Docker info\n\nKernel Version: 4.9.93-linuxkit-aufs\nOperating System: Docker for Windows\nOSType: linux",
-            "title": "Get Docker CE"
-        },
-        {
-            "location": "/docker/#author",
-            "text": "Email: s.kupletsky@gmail.com\nTwitter: https://twitter.com/zavoloklom/\nGitHub: https://github.com/zavoloklom/\nCodePen: http://codepen.io/zavoloklom/\nDribble: https://dribbble.com/zavoloklom/",
-            "title": "Author"
-        },
-        {
-            "location": "/docker/#preparing-mkdocs-environment",
-            "text": "",
-            "title": "Preparing mkdocs environment"
+            "title": "Install mkdocs environment"
         },
         {
             "location": "/docker/#install-python-354-for-windows",
-            "text": "Python for Windows   / Python 3.5.4 for windows x64 installer   Choose the windows 64-bit exe install option  Be sure to check the add python to path box!    Tip  find out what version of python is installed  1 python --version",
-            "title": "Install python 3.5.4 for windows"
+            "text": "Python for Windows   / Python 3.5.4 for windows x64 installer   Tip   Choose the windows 64-bit exe install option  Be sure to check the checkbox that adds python to path!     if python is already installed  double check the version of python at the time of creating this documentation 3.5.4 was the latest version that enabled mkdocs to work reliably.  1 python   - -version",
+            "title": "Install python 3.5.4 for Windows"
         },
         {
             "location": "/docker/#install-mkdocs-tool-chain",
-            "text": "1\n2\n3\n4\n5\n6\n7 pip install mkdocs\n\nmkdocs new DemoDocs\n\nINFO    -  Creating project directory: DemoDocs\nINFO    -  Writing config file: DemoDocs\\mkdocs.yml\nINFO    -  Writing initial docs: DemoDocs\\docs\\index.md",
+            "text": "1 pip install mkdocs",
             "title": "Install mkdocs tool chain"
         },
         {
-            "location": "/docker/#demo-the-new-site-locally",
-            "text": "1\n2\n3\n4\n5\n6\n7\n8\n9 cd .\\DemoDocs\nmkdocs serve\n\nINFO    -  Building documentation...\nINFO    -  Cleaning site directory\n[I 180702 22:41:06 server:292] Serving on http://127.0.0.1:8000\n[I 180702 22:41:06 handlers:59] Start watching changes\n[I 180702 22:41:06 handlers:61] Start detecting changes\n[I 180702 22:41:25 handlers:132] Browser Connected: http://localhost:8000/",
-            "title": "Demo the new site locally"
+            "location": "/docker/#create-a-new-site",
+            "text": "Create a few new markdown documents for a demo site, start with a home document usually this is index.md and maybe add a simple about page called about.md luckily mkdocs can generate a stub for you.  1 mkdocs new DemoDocs    1\n2\n3 INFO    -  Creating project directory: DemoDocs\nINFO    -  Writing config file: DemoDocs\\mkdocs.yml\nINFO    -  Writing initial docs: DemoDocs\\docs\\index.md",
+            "title": "Create a new site"
+        },
+        {
+            "location": "/docker/#publish-the-new-mkdocs-site-locally",
+            "text": "1\n2\n3 cd .\\DemoDocs\n\nmkdocs serve    1\n2\n3\n4\n5\n6 INFO    -  Building documentation...\nINFO    -  Cleaning site directory\n[I 180702 22:41:06 server:292] Serving on http://127.0.0.1:8000\n[I 180702 22:41:06 handlers:59] Start watching changes\n[I 180702 22:41:06 handlers:61] Start detecting changes\n[I 180702 22:41:25 handlers:132] Browser Connected: http://localhost:8000/     Tip  The serve command usually launches the default browser; if this has not occurred navigate to the uri address above. Check the ports and in case of collisions configure mkdocs to serve on a different port e.g.  -a localhost:8090",
+            "title": "Publish the new mkdocs site locally"
         },
         {
             "location": "/docker/#install-a-ui-theme",
-            "text": "https://github.com/squidfunk/mkdocs-material 1 pip install mkdocs-material",
-            "title": "install a UI Theme"
+            "text": "View the mkdocs-material theme on GitHub  1 pip install mkdocs-material",
+            "title": "Install a UI Theme"
         },
         {
-            "location": "/docker/#markdown-introduction",
-            "text": "Create a few new markdown documents for a demo\nShow the docs rendered in Visual Studio 2017",
-            "title": "Markdown introduction"
-        },
-        {
-            "location": "/docker/#prepare-the-new-doc-site",
-            "text": "Create a yml config for mkdocs  1\n2\n3\n4\n5\n6 site_name: 'Docker Introduction'\npages:\n    - Home: index.md\n    - Docs: DevelopDocs.md\n    - About: about.md\ntheme: readthedocs",
-            "title": "Prepare the new doc site"
+            "location": "/docker/#update-the-site-configuration",
+            "text": "Update the site configuration for mkdocs to render the new site with a new theme. MkDocs uses the yaml format for its configuration, find the section called theme and change this to material.  1\n2\n3\n4\n5 site_name :   'DemoDocs'  pages : \n     -   Home :   index.md \n     -   About :   about.md  theme :   readthedocs",
+            "title": "Update the site configuration"
         },
         {
             "location": "/docker/#demo-the-results-hosted-locally",
@@ -71,29 +66,44 @@
             "title": "Demo the results hosted locally"
         },
         {
-            "location": "/docker/#create-new-nginx-webserver",
-            "text": "NGINX project  1 docker run --detach --publish 80:80 --name webserver nginx   Demo nginx default site in the running container nginx default site  1\n2\n3\n4 docker ps\n\nCONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                NAMES\n9149d927a911        nginx               \"nginx -g 'daemon of\"   6 minutes ago       Up 6 minutes        0.0.0.0:80->80/tcp   webserver",
-            "title": "Create new nginx webserver"
+            "location": "/docker/#publish-to-a-new-container",
+            "text": "",
+            "title": "Publish to a new Container"
         },
         {
-            "location": "/docker/#publish-the-site-for-production",
-            "text": "Create a Dockerfile   Take latest nginx image   Build out the new docker image layer   Set working directory inside the image  Copy the mkdocs output:  site  into the image     1\n2\n3 FROM nginx\nWORKINGDIR /usr/share/nginx/html\nCOPY site .",
-            "title": "Publish the site for production"
+            "location": "/docker/#poc-with-a-raw-nginx-webserver",
+            "text": "Visit the nginx project  1 docker run --detach --publish 80:80 --name webserver nginx   Open the nginx default website running in the running container http://localhost:80  1 docker ps    results in container instance details  1\n2 CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                NAMES\n9149d927a911        nginx               \"nginx -g 'daemon of\"   6 minutes ago       Up 6 minutes        0.0.0.0:80->80/tcp   webserver",
+            "title": "PoC with a raw nginx webserver"
+        },
+        {
+            "location": "/docker/#create-a-dockerfile",
+            "text": "Requirements   Use the latest nginx public image from  Docker Hub  Set working directory so that content can be created in the correct directory for nginx to discover the website entrypoint  Copy the contents from the mkdocs build artifacts:  site  into the image working directory    The new Dockerfile that matches these requirements looks like this:  1\n2\n3 FROM  nginx \nWORKINGDIR /usr/share/nginx/html\nCOPY site .",
+            "title": "Create a Dockerfile"
         },
         {
             "location": "/docker/#build-the-doc-site-and-the-new-docker-image",
-            "text": "1\n2 mkdocs build\ndocker build --tag mkdocs:v1 .   1\n2\n3\n4 docker images\n\nREPOSITORY          TAG                 IMAGE ID            CREATED             SIZE\nmkdocs              v1                  fa8bbd0a2524        3 minutes ago       110MB   Demo the Running the container and show the same site is now in the running container.  Talk about scaling.",
+            "text": "Execute mkdocs to build the new  site  directory containing the content used for static publication. This uses the mkdocs.yml configuration that was defined earlier.  1 mkdocs build",
             "title": "Build the doc site and the new docker image"
         },
         {
-            "location": "/kubernetes/",
-            "text": "Welcome to Docker\n\u00b6",
-            "title": "Kubernetes"
+            "location": "/docker/#build-the-docker-image",
+            "text": "1 docker build --tag mkdocs:v1 .   As  docker build  executes, new docker image layer(s) are created that contain the changes described in the Dockerfile, almost every instruction creates a new image layer to contain each change.   Tip  Tags are used to apply and track change in new images and multiple tags can be added to a single image.  tag  :latest  is used by various tools including Docker and Kubernetes to identify the most recent change. This is useful in continuous delivery process where it is desirable to deploy the latest changes without having to modify configuration files or wire through version details imperatively.    List the new Docker image to see the results  1 docker image ls   Results in:  1\n2 REPOSITORY TAG IMAGE ID CREATED SIZE\ndocker-site-demo v1 fa8bbd0a2524 3 minutes ago 110MB     Note  Docker build is often referred to as 'bake' or 'baking' or a 'bake phase'",
+            "title": "Build the Docker image"
         },
         {
-            "location": "/kubernetes/#welcome-to-docker",
-            "text": "",
-            "title": "Welcome to Docker"
+            "location": "/docker/#demo-the-running-the-container",
+            "text": "Fail  todo: improve this section   To view the published site and show the same contents as we saw using  mkdocs serve  open a browser and navigate to the uri address of the container.  docker run --detach --name demo-site-instance -P 80:80 .  Now that the container is running, it is possible to see the process using  docker ps",
+            "title": "Demo the Running the container"
+        },
+        {
+            "location": "/kubernetes/",
+            "text": "Deploying on Kubernetes\n\u00b6\n\n\nFor this research Kubernetes declarative configuration is used to achieve a desired state rather than an imperative approach using kubectl.\n\n\n\n\ndeclarative deployment\n\n\n 1\n 2\n 3\n 4\n 5\n 6\n 7\n 8\n 9\n10\n11\n12\n13\n14\n15\n16\n17\n18\n19\n20\n21\n22\n23\n24\n25\n26\nsite_name\n:\n \n'docker-site-demo'\n\n\nsite_description\n:\n \n\"Demonstration\n \nof\n \na\n \nmkdocs\n \nsite\n \npublished\n \nas\n \na\n \ndocker\n \nimage\n \nusing\n \na\n \nsmall\n \nnginx\n \nlinux\n \nimage\n \nas\n \na\n \nbase.\"\n\n\nsite_author\n:\n \n'https://github.com/ukbendavies'\n\n\nrepo_name\n:\n \n'ukbendavies/docker-site-demo'\n\n\nrepo_url\n:\n \n'https://github.com/ukbendavies/docker-site-demo'\n\n\npages\n:\n\n    \n-\n \nIntroduction\n:\n \nindex.md\n\n    \n-\n \nDocker\n:\n \ndocker.md\n\n    \n-\n \nKubernetes\n:\n \nkubernetes.md\n\n\ntheme\n:\n\n    \nname\n:\n \n'material'\n\n    \npalette\n:\n\n        \nprimary\n:\n \n'red'\n\n        \naccent\n:\n \n'red'\n\n    \nlanguage\n:\n \n'en'\n\n    \nfeature\n:\n\n        \ntabs\n:\n \nfalse\n\n\nmarkdown_extensions\n:\n\n    \n-\n \nadmonition\n\n    \n-\n \npymdownx.superfences\n\n    \n-\n \ncodehilite\n:\n\n        \nlinenums\n:\n \ntrue\n\n    \n-\n \ntoc\n:\n\n        \npermalink\n:\n \ntrue\n\n\nextra\n:\n\n    \nrepo_icon\n:\n \n'github'",
+            "title": "Deploy"
+        },
+        {
+            "location": "/kubernetes/#deploying-on-kubernetes",
+            "text": "For this research Kubernetes declarative configuration is used to achieve a desired state rather than an imperative approach using kubectl.   declarative deployment   1\n 2\n 3\n 4\n 5\n 6\n 7\n 8\n 9\n10\n11\n12\n13\n14\n15\n16\n17\n18\n19\n20\n21\n22\n23\n24\n25\n26 site_name :   'docker-site-demo'  site_description :   \"Demonstration   of   a   mkdocs   site   published   as   a   docker   image   using   a   small   nginx   linux   image   as   a   base.\"  site_author :   'https://github.com/ukbendavies'  repo_name :   'ukbendavies/docker-site-demo'  repo_url :   'https://github.com/ukbendavies/docker-site-demo'  pages : \n     -   Introduction :   index.md \n     -   Docker :   docker.md \n     -   Kubernetes :   kubernetes.md  theme : \n     name :   'material' \n     palette : \n         primary :   'red' \n         accent :   'red' \n     language :   'en' \n     feature : \n         tabs :   false  markdown_extensions : \n     -   admonition \n     -   pymdownx.superfences \n     -   codehilite : \n         linenums :   true \n     -   toc : \n         permalink :   true  extra : \n     repo_icon :   'github'",
+            "title": "Deploying on Kubernetes"
         }
     ]
 }
