@@ -171,7 +171,6 @@ docker ps
 
 ### Create a Dockerfile
 
-
 !!! EXAMPLE "Requirements"
 
     - Use the latest nginx public image from [Docker Hub](https://hub.docker.com/)
