@@ -1,0 +1,29 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: docker-site-demo
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: docker-site-demo
+    spec:
+      containers:
+      - name: docker-site-demo
+        image: <your container registry>/docker-site-demo:latest
+        ports:
+        - containerPort: 80
+      imagePullSecrets:
+      - name: acr-auth
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: docker-site-demo-svc
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 80
+  selector:
+    app: docker-site-demo
