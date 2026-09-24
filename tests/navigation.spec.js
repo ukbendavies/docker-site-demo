@@ -15,10 +15,10 @@ test("navigates through the documentation site", async ({ page }) => {
     "Deploying a new documentation site using Containers",
   );
 
-  await page.getByRole("link", { name: /Next\s+Build/ }).click();
+  await page.getByRole("link", { name: "Build", exact: true }).click();
   await expectPage(page, "/docker/", "Build - docker-site-demo", "Build");
 
-  await page.getByRole("link", { name: /Next\s+Deploy/ }).click();
+  await page.getByRole("link", { name: "Deploy", exact: true }).click();
   await expectPage(
     page,
     "/kubernetes/",
@@ -26,6 +26,6 @@ test("navigates through the documentation site", async ({ page }) => {
     "Deploying on Kubernetes",
   );
 
-  await page.getByRole("link", { name: /Previous\s+Build/ }).click();
+  await page.getByRole("link", { name: "Build", exact: true }).click();
   await expectPage(page, "/docker/", "Build - docker-site-demo", "Build");
 });

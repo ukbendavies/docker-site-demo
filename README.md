@@ -63,6 +63,17 @@ Set `SLOW_MO` in milliseconds to slow browser interactions:
 SLOW_MO=1000 npm run test:headed
 ```
 
-GitHub Actions checks out the generated site from the `gh-pages` branch and
-serves it locally for the test run. This avoids external bot-protection pages
-affecting CI while exercising the same published HTML and navigation.
+## GitHub Actions
+
+The workflow separates pull request validation from published-site monitoring:
+
+- **PR gate:** Builds the MkDocs source from the pull request and serves the
+  generated `site/` directory locally before running Playwright.
+- **Published site:** Runs every Monday at 07:00 UTC, checks out the generated
+  site from `gh-pages`, and serves it locally before running Playwright. It can
+  also be started manually with the **Run workflow** button.
+
+Serving the generated HTML locally prevents external bot-protection pages from
+affecting GitHub-hosted runners. The scheduled test validates the current
+published `gh-pages` content, but does not test DNS, TLS, Cloudflare, or the
+public `bendavies.me` endpoint.
