@@ -69,11 +69,13 @@ The workflow separates pull request validation from published-site monitoring:
 
 - **PR gate:** Builds the MkDocs source from the pull request and serves the
   generated `site/` directory locally before running Playwright.
-- **Published site:** Runs every Monday at 07:00 UTC, checks out the generated
-  site from `gh-pages`, and serves it locally before running Playwright. It can
-  also be started manually with the **Run workflow** button.
+- **Scheduled regression:** Every Monday at 07:00 UTC, or manually, builds the
+  current `master` source and runs Playwright against it.
+
+Pushes to `master` trigger the GitHub Pages deployment workflow. It builds the
+site with the pinned MkDocs dependencies, runs Playwright against the generated
+files, and deploys that exact tested artifact through GitHub Pages.
 
 Serving the generated HTML locally prevents external bot-protection pages from
-affecting GitHub-hosted runners. The scheduled test validates the current
-published `gh-pages` content, but does not test DNS, TLS, Cloudflare, or the
-public `bendavies.me` endpoint.
+affecting GitHub-hosted runners. These tests do not validate DNS, TLS,
+Cloudflare, or the public `bendavies.me` endpoint.
