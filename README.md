@@ -13,3 +13,67 @@ MkDocs and nginx were chosen as reasonable examples of a minimalist stack that r
 The documents herein aims to cover core research topics and will hopefully help others exploring these topics. The example MkDocs site is available using GitHub Pages so that viewers can gain a flavour of what the running container would look like if the docs are followed. GitHub Pages is used to avoid on-going costs involved in Kubernetes container hosting for this non-production workload.
 
 To assist learning, some factors are intentionally ignored such as official mkdocs docker images and the fact that mkdocs can host directly on GitHub pages, and other such facts.
+
+## Playwright smoke tests
+
+The Playwright tests verify navigation through the deployed documentation site:
+
+1. Abstract
+2. Build
+3. Deploy
+4. Back to Build
+
+Each page is checked for its expected URL, title, and main heading.
+
+Install the test dependencies and browser:
+
+```bash
+npm install
+npx playwright install chromium
+```
+
+Run the tests headlessly:
+
+```bash
+npm test
+```
+
+Run the tests in a visible browser:
+
+```bash
+npm run test:headed
+```
+
+Use Playwright's interactive UI:
+
+```bash
+npm run test:ui
+```
+
+The tests target `https://bendavies.me` by default. Set `BASE_URL` to test
+another deployment:
+
+```bash
+BASE_URL=http://localhost:8000 npm test
+```
+
+Set `SLOW_MO` in milliseconds to slow browser interactions:
+
+```bash
+SLOW_MO=1000 npm run test:headed
+```
+
+## GitHub Actions
+
+The workflow separates pull request validation from published-site monitoring:
+
+- **PR gate:** Builds the MkDocs source from the pull request and serves the
+  generated `site/` directory locally before running Playwright.
+- **Published site:** Runs every Monday at 07:00 UTC, checks out the generated
+  site from `gh-pages`, and serves it locally before running Playwright. It can
+  also be started manually with the **Run workflow** button.
+
+Serving the generated HTML locally prevents external bot-protection pages from
+affecting GitHub-hosted runners. The scheduled test validates the current
+published `gh-pages` content, but does not test DNS, TLS, Cloudflare, or the
+public `bendavies.me` endpoint.
