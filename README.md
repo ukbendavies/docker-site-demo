@@ -62,3 +62,7 @@ Set `SLOW_MO` in milliseconds to slow browser interactions:
 ```bash
 SLOW_MO=1000 npm run test:headed
 ```
+
+GitHub Actions checks out the generated site from the `gh-pages` branch and
+serves it locally for the test run. This avoids external bot-protection pages
+affecting CI while exercising the same published HTML and navigation.
